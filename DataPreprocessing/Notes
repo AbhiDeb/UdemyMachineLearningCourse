@@ -1,3 +1,4 @@
+-----------------------------------------------------------
 Catogorical Data
 -----------------------------------------------------------
 
@@ -17,3 +18,64 @@ use it in our equations.
 So to solve this we use OneHotEncoder class. It makes x number of columns where x is the number of categories
 in that particular catogorical column.
 So in each of the column, if a particlar value of category is there, it's value will be 1.
+
+-----------------------------------------------------------
+Splitting the dataset into test set and training set
+-----------------------------------------------------------
+We need to make our algorithm learn by itself by providing them with some dataset, that will be called training
+set. But to check if our algo has learned it smartly, we will check it's performance by testing it on test set.
+
+We need our algo/model to learn the data not by heart but to understand the dataset and make predictions from it.
+
+While using python library train_test_set, we give test_size as argument to tell, how big we want our test set to be.
+So if we give value 0.5, it means 50% of our data set will be test set and remaining will be training set.
+For good practice, we keep this value as 0.20 or 0.25 (20% or 25% respectively).
+
+train_test_split splits arrays or matrices into random train and test subsets. That means that everytime you run it without specifying random_state, you will get a different result, this is expected behavior. For example:
+
+Run 1:
+
+>>> a, b = np.arange(10).reshape((5, 2)), range(5)
+>>> train_test_split(a, b)
+[array([[6, 7],
+        [8, 9],
+        [4, 5]]), array([[2, 3],
+        [0, 1]]), [3, 4, 2], [1, 0]]
+Run 2
+
+>>> train_test_split(a, b)
+[array([[8, 9],
+        [4, 5],
+    [0, 1]]), array([[6, 7],
+    [2, 3]]), [4, 2, 0], [3, 1]]
+If you use random_state=some_number, then you can guarantee that your split will be always the same. This is useful if you want reproducible results, for example in testing for consistency in the documentation (so that everybody can see the same numbers). I would say, set the random_state to some fixed number while you test stuff, but then remove it in production if you need a random (and not a fixed) split.
+
+Regarding your second question, a pseudo-random number generator is a number generator that generates almost truly random numbers.
+
+
+In R, if you want to add a package, you just need to type:
+
+install.packages('package_name')
+
+And to include that library we need to write,
+
+library(package_name)   #Notice it's without quotes
+
+IN R we make function split.sample to split our dataset. Here in Split_ratio we give % for training set, which is unlike Python where we
+gave % for test set.
+This func returns true if the func splits in training set and false if it splits in test set.
+
+The subset( ) function is the easiest way to select variables and observations. In the following example, we select all rows that have a value of age greater than or equal to 20 or age less then 10. We keep the ID and Weight columns.
+
+-----------------------------------------------------------
+Feature Scaling
+-----------------------------------------------------------
+
+The machine learning models need data to be in a range so that the processing can be easier. Lot of machine learning models are based on
+Euclidean Distance where the data from columns are selected as coordinate
+
+sqrt((y2-y1)^2 + (x2-x1)2)
+
+So if the data is not in the same range, one range will dominate the value of above eucladian formula.
+
+Hence we scale our data from -1 to 1. We can also scale our dummy variable, (the one where we encode our data) depends on the context.
