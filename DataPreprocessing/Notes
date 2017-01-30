@@ -1,0 +1,19 @@
+Catogorical Data
+-----------------------------------------------------------
+
+The data in a column which has categories.
+
+Like if in a column the values are Yes/No, it is categorical data as it contains 2 categories,
+namely Yes and No.
+
+ML is all about equations. So if some categorical data contains text or something, we have to encode those
+data into numbers.
+
+LabelEncoder encodes the value to it's numerical value. Like for France,Germany and Spain it will encode
+it to 0,1 and 2 respectively.
+This doesn't make sense as it is like giving priroties to these countries. We just want to encode them to 
+use it in our equations.
+
+So to solve this we use OneHotEncoder class. It makes x number of columns where x is the number of categories
+in that particular catogorical column.
+So in each of the column, if a particlar value of category is there, it's value will be 1.
